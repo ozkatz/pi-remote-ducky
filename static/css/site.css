@@ -1,0 +1,41 @@
+body {
+    padding: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+p.error-message {
+    color: red;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+p.success-message {
+    color: green;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* form styling */
+.form-widget {
+    padding-bottom: 25px;
+}
+
+.form-widget input, .form-widget textarea {
+    padding: 5px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.form-widget input {
+    min-width: 300px;
+}
+
+.script-widget textarea {
+    width: 800px;
+    height: 600px;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}

@@ -1,0 +1,17 @@
+[Unit]
+Description=KB logger server
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+WorkingDirectory=/opt/ducky-server
+Environment=FLASK_APP=server.py
+Environment=LC_ALL=C.UTF-8
+Environment=LANG=C.UTF-8
+ExecStart=/usr/bin/env python3 -m flask run --host=0.0.0.0
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Live Ducky Script Editor</h1>
+
+<div class="form-container">
+    <form method="post" action="/">
+        <div class="form-widget script-widget">
+                <textarea autofocus id="script" name="script">{{form.get('script', '')}}</textarea>
+        </div>
+        {% if error %}
+        <p class="form-widget error-message">{{error}}</p>
+        {% endif %}
+        {% if validated %}
+        <p class="form-widget success-message">Validation Successful</p>
+        {% endif %}
+        {% if msg == "deleted" %}
+        <p class="form-widget success-message">Script deleted</p>
+        {% endif %}
+        <div class="form-widget button-widget">
+            <button type="submit" name="action" id="validate-btn" value="validate">Validate</button>
+            <button type="submit" name="action" id="run-btn" value="run">Run</button>
+            <a href="#" class="save-expand">Save</a>
+            <a href="#" class="load-expand">Load</a>
+        </div>
+        <div class="hidden form-widget save-widget">
+            <input type="text" name="name" placeholder="Name (i.e. example.ducky)" value="{{form.get('name', '')}}"/>
+            <button type="submit" name="action" id="save-btn" value="save">Save</button>
+        </div>
+    </form>
+</div>
+
+<div class="script-list hidden">
+    {% if scripts %}
+    <h3>Choose existing scripts</h3>
+    {% for script in scripts %}
+    <p>
+        <a href="/?load={{script}}">{{script}}</a> <small>(<a data-name="{{script}}" class="delete-link" href="/delete?script={{script}}">delete</a>)</small>
+    </p>
+    {% endfor %}
+    {% else %}
+    <h3>No existing scripts</h3>
+    {% endif %}
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+{% endblock %}
